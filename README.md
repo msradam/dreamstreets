@@ -6,7 +6,6 @@ Author: Adam Munawar Rahman, September 2025
 
 DreamStreets uniquely combines OpenAI's most powerful open-source model (120 billion parameters) with established GPU-accelerated scientific computing infrastructure. By integrating GPT-OSS-120b with RAPIDS AI notebooks, we demonstrate how LLMs can augment traditional data science workflows for urban planning and humanitarian applications.
 
-
 ## ► What It Does
 
 DreamStreets leverages GPT-OSS-120b alongside RAPIDS' GPU-accelerated data science stack to:
@@ -26,7 +25,7 @@ DreamStreets leverages GPT-OSS-120b alongside RAPIDS' GPU-accelerated data scien
 ### AI & Scientific Computing Stack
 - **LLM**: GPT-OSS-120b (120B parameters) via Ollama - completely offline
 - **Scientific Computing**: RAPIDS AI 25.10a with CUDA 12.9 for GPU-accelerated data processing
-- **Graph Analysis**: NetworkX Python library with built-in graph algorithm methods
+- **Graph Analysis**: NetworkX with converted numeric attributes for algorithm compatibility
 - **Spatial Database**: DuckDB with spatial extensions
 - **Agent Framework**: LangGraph ReAct agent with specialized tools
 - **Data Source**: OpenStreetMap via OSMnx
@@ -39,6 +38,7 @@ This project demonstrates the powerful synergy between established scientific co
 ### Container Configuration
 - **Base Image**: `rapidsai/notebooks:25.10a-cuda12.9-py3.12-amd64`
 - **Environment**: JupyterLab with RAPIDS GPU-accelerated libraries
+- **Authentication**: Disabled for easy access (configurable for production)
 
 ### Hardware Requirements
 - **GPU**: NVIDIA A100 SXM (80GB VRAM)
@@ -48,7 +48,7 @@ This project demonstrates the powerful synergy between established scientific co
 
 ### Setup Instructions
 
-1. Deploy the dreamstreets template on Runpod with exposed ports:
+1. Deploy the dreamstreets template (will make public) on Runpod with exposed ports:
    - 8888 (JupyterLab)
    - 11434 (Ollama API)
    - 22 (SSH)
@@ -134,3 +134,27 @@ result = analyze(
 - Optimized evacuation center placement for 1M+ residents
 - Identified flood-vulnerable articulation points
 - Mapped emergency medical routes requiring night lighting
+
+## ▪ Requirements
+
+```text
+pandas>=2.0.0
+numpy>=1.24.0
+geopandas>=0.14.0
+duckdb>=0.9.0
+networkx>=3.0
+osmnx>=1.8.0
+matplotlib>=3.7.0
+langchain-ollama>=0.1.0
+langchain-core>=0.2.0
+langgraph>=0.2.0
+rich>=13.0.0
+```
+
+## ◆ Acknowledgments
+
+Built on the foundation of [AskStreets](https://devpost.com/software/askstreets-querying-and-visualizing-street-networks), winner of the ArangoDB GraphRAG Hackathon. Special thanks to the open-source community for making powerful AI accessible to all.
+
+---
+
+_Powered by GPT-OSS-120b - OpenAI's most advanced open-source model_
