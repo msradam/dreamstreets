@@ -12,7 +12,7 @@ DreamStreets leverages GPT-OSS-120b alongside RAPIDS' GPU-accelerated data scien
 - Generate and execute NetworkX graph algorithms for network analysis
 - Create spatial SQL queries for POI and facility analysis  
 - Perform chain-of-thought reasoning to break down complex urban planning questions
-- Provide actionable insights for both urban environments and humanitarian contexts
+- Provide actionable insights for both urban planning and humanitarian contexts
 
 ### Key Applications
 - **Urban Planning**: Optimal business locations, infrastructure vulnerability assessment
@@ -29,6 +29,17 @@ DreamStreets leverages GPT-OSS-120b alongside RAPIDS' GPU-accelerated data scien
 - **Spatial Database**: DuckDB with spatial extensions
 - **Agent Framework**: LangGraph ReAct agent with specialized tools
 - **Data Source**: OpenStreetMap via OSMnx
+
+## Why GPT-OSS-120b?
+This project explores OpenAI's most powerful open-weight model (120B parameters) for geospatial reasoning. Key advantages for DreamStreets:
+
+- **Complete offline operation** - Critical for field deployment in low-connectivity areas and data regulation
+- **Transparent chain-of-thought** - Unlike API models, we can see the full reasoning process for debugging and trust
+- **Proven tool use capabilities** - Strong performance on agentic workflows (TauBench benchmarks)
+- **Efficient MoE architecture** - Only 5.1B active parameters per token despite 117B total
+- **Technical exploration** - First experience running large models on enterprise GPUs (A100 80GB)
+
+The model's unsupervised CoT is particularly valuable for urban planning - decision-makers can audit the reasoning behind infrastructure recommendations. Running locally also ensures data sovereignty for sensitive government/humanitarian datasets.
 
 ### Why RAPIDS + LLMs?
 This project demonstrates the powerful synergy between established scientific computing tools and cutting-edge language models. The RAPIDS ecosystem provides battle-tested GPU acceleration for data manipulation, while GPT-OSS-120b adds natural language understanding and code generation capabilities. This combination enables domain experts to leverage complex algorithms without writing code.
@@ -113,7 +124,7 @@ result = analyze(
 - **Chain-of-thought reasoning** for complex spatial problems
 - **Dynamic code generation** for NetworkX algorithms and SQL queries
 - **Multi-tool orchestration** combining graph and database analysis
-- **Complete offline operation** - critical for field deployment
+- **Complete offline operation** critical for field deployment + data regulation and compliance
 - **Real-world impact** on urban planning and humanitarian response
 
 ## ═ Performance
@@ -150,11 +161,3 @@ langchain-core>=0.2.0
 langgraph>=0.2.0
 rich>=13.0.0
 ```
-
-## ◆ Acknowledgments
-
-Built on the foundation of [AskStreets](https://devpost.com/software/askstreets-querying-and-visualizing-street-networks), winner of the ArangoDB GraphRAG Hackathon. Special thanks to the open-source community for making powerful AI accessible to all.
-
----
-
-_Powered by GPT-OSS-120b - OpenAI's most advanced open-source model_
